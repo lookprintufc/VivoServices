@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <h1>Servicos - total: <%=number_to_currency(@services.sum_prices, unit: "R$", separator: ",") %></h1>
+ 	
+ 	<table>
+	  <thead>
+	    <tr>
+	      <th>Nome</th>
+	      <th>Preço</th>
+	      <th>#</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @services.each do |service| %>
+	      <tr>
+	        <td><%= service.name %></td>
+	        <td><%= service.price %></td>
+	        <td><%=link_to 'Deletar', user_remove_service_user_path(@user, service), method: :delete %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

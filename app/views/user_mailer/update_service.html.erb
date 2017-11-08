@@ -1,0 +1,23 @@
+<h1>Olá <%=@user.first_name%>! Seus serviços foram atualizados</h1>
+
+<p>
+   <h1>Servicos - total: <%=number_to_currency(@user.services.sum_prices, unit: "R$", separator: ",") %></h1>
+ 	
+ 	<table>
+	  <thead>
+	    <tr>
+	      <th>Nome</th>
+	      <th>Preço</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @user.services.each do |service| %>
+	      <tr>
+	        <td><%= service.name %></td>
+	        <td><%= service.price %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+</p>
